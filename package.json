@@ -1,0 +1,27 @@
+{
+  "name": "tyche-bot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/park-early/tyche-bot.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/park-early/tyche-bot/issues"
+  },
+  "homepage": "https://github.com/park-early/tyche-bot#readme",
+  "dependencies": {
+    "@discordjs/rest": "^1.0.1",
+    "discord.js": "^14.1.2"
+  },
+  "devDependencies": {
+    "eslint": "^8.21.0"
+  }
+}
