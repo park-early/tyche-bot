@@ -6,7 +6,7 @@ const fs = require('node:fs');
 const path = require('node:path');
 const { Routes } = require('discord.js');
 const { REST } = require('@discordjs/rest');
-const { clientId, guildId, token } = require('./config.json');
+const { clientId, token } = require('./config.json');
 
 
 const commands = [];
@@ -24,6 +24,6 @@ for (const file of commandFiles) {
 const rest = new REST({ version: '10' }).setToken(token);
 
 // PUT request sent to a defined URL with the ids as path variables and the commands in the request body
-rest.put(Routes.applicationGuildCommands(clientId, guildId), { body: commands })
+rest.put(Routes.applicationCommands(clientId), { body: commands })
 	.then(() => console.log('Succesfully registered application commands'))
 	.catch(console.error);
