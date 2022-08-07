@@ -34,7 +34,7 @@ async function execute(interaction) {
 		)
 		.setImage(((card.data).images).small)
 		.setColor(embedColour.mapEmbedColour((card.data).types[0]));
-	interaction.reply({ embeds: [embed] });
+	await interaction.reply({ embeds: [embed] });
 }
 
 module.exports = {
