@@ -1,7 +1,7 @@
 const name = 'interactionCreate';
 
 async function execute(interaction) {
-	console.log(`${interaction.user.tag} in #${interaction.channel.name} triggered an interaction.`);
+	// console.log(`${interaction.user.tag} in #${interaction.channel.name} triggered an interaction.`);
 
 	if (!interaction.isChatInputCommand()) return;
 
