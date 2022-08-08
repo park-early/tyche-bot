@@ -1,8 +1,9 @@
 const fs = require('node:fs');
 const path = require('node:path');
 const { Client, GatewayIntentBits, Collection } = require('discord.js');
-const { token } = require('./config.json');
+const { token, pokemonTcgApiKey } = require('./config.json');
 const client = new Client({ intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages] });
+const pokemonTcgApi = require('pokemontcgsdk');
 
 // compiles all the commands in a 'commands' map as key value pairs (command name : exported module)
 client.commands = new Collection();
@@ -29,5 +30,8 @@ for (const file of eventFiles) {
 		client.on(event.name, (...args) => event.execute(...args));
 	}
 }
+
+// login to the pokemontcgsdk
+pokemonTcgApi.configure({ apiKey: pokemonTcgApiKey });
 
 client.login(token);

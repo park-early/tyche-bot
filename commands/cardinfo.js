@@ -1,6 +1,6 @@
 const { SlashCommandBuilder, EmbedBuilder } = require('discord.js');
-const { request } = require('undici');
 const embedColour = require('../enums/embedColour');
+const pokemonTcgApi = require('pokemontcgsdk');
 
 const data = new SlashCommandBuilder()
 	.setName('cardinfo')
@@ -11,29 +11,18 @@ const data = new SlashCommandBuilder()
 			.setRequired(true),
 	);
 
-async function getJSONResponse(body) {
-	let fullBody = '';
-
-	for await (const requestData of body) {
-		fullBody += requestData.toString();
-	}
-
-	return JSON.parse(fullBody);
-}
-
 // send a GET request and reply with an image of the card
 async function execute(interaction) {
 	const cardid = interaction.options.getString('id');
-	const response = await request(`https://api.pokemontcg.io/v2/cards/${cardid}`);
-	const card = await getJSONResponse(response.body);
+	const card = await pokemonTcgApi.card.find(cardid);
 	const embed = new EmbedBuilder()
-		.setTitle(`${(card.data).name}`)
+		.setTitle(`${card.name}`)
 		.addFields(
-			{ name: 'ID', value: (card.data).id },
-			{ name: 'Rarity', value: (card.data).rarity },
+			{ name: 'ID', value: card.id },
+			{ name: 'Rarity', value: card.rarity },
 		)
-		.setImage(((card.data).images).small)
-		.setColor(embedColour.mapEmbedColour((card.data).types[0]));
+		.setImage((card.images).small)
+		.setColor(embedColour.mapEmbedColour(card.types[0]));
 	await interaction.reply({ embeds: [embed] });
 }
 
