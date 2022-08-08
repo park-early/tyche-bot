@@ -1,16 +1,16 @@
-// for now, the set count only includes pokemon cards (no supporters, energy, etc.)
+// map the common name to the setid
 const cardSet = new Map([
-	['xy1', 114],
+	['Base Set', 'base1'],
 ]);
 
-// returns the number of cards in a set
-function mapCardSet(set) {
-	for (const setId of cardSet.keys()) {
-		if (set == setId) return cardSet.get(setId);
+// returns the set id
+function getSetId(set) {
+	for (const setName of cardSet.keys()) {
+		if (set == setName) return cardSet.get(setName);
 	}
-	throw 'Invalid Card Set';
+	throw 'Card set name or id error';
 }
 
 module.exports = {
-	mapCardSet,
+	getSetId,
 };

@@ -5,19 +5,20 @@ const embedColour = new Map([
 	['Lightning', 0xFFFF00],
 	['Dragon', 0xFFD700],
 	['Fairy', 0xFFC0CB],
-	['Dark', 0x000000],
+	['Darkness', 0x000000],
 	['Colorless', 0xFFFFFF],
 	['Metal', 0xC0C0C0],
 	['Fighting', 0x964B00],
 	['Psychic', 0x6A0DAD],
 ]);
 
-// returns the hex code value corresponding to the card type, returns black otherwise
-function mapEmbedColour(type) {
+// returns the hex code value corresponding to the card type, returns grey for trainer/supporter cards
+function mapEmbedColour(card) {
+	if (card.supertype == 'Trainer') return 0x808080;
 	for (const embedColourType of embedColour.keys()) {
-		if (type == embedColourType) return embedColour.get(embedColourType);
+		if ((card.types)[0] == embedColourType) return embedColour.get(embedColourType);
 	}
-	return 0x000000;
+	throw 'Card type error';
 }
 
 module.exports = {

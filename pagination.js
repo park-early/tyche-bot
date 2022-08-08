@@ -5,7 +5,7 @@ const paginationEmbed = async (interaction, pages, timeout = 1000 * 60) => {
 	if (!pages) throw new Error('Pages are not given.');
 	let page = 0;
 
-	await interaction.reply({ embeds: [pages[page]], components: [getButtons(page)] });
+	await interaction.editReply({ embeds: [pages[page]], components: [getButtons(page)] });
 
 	const filter = user => !user.bot;
 	const collector = interaction.channel.createMessageComponentCollector({ filter, time: timeout });
