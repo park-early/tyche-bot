@@ -3,6 +3,7 @@ const { getSetId } = require('../enums/cardSet');
 const embedColour = require('../enums/embedColour');
 const { paginationEmbed } = require('../pagination');
 const pokemonTcgApi = require('pokemontcgsdk');
+const { t_collection } = require('../database.js');
 
 const data = new SlashCommandBuilder()
 	.setName('openpack')
@@ -36,6 +37,14 @@ async function execute(interaction) {
 	}
 	// grab random rare card id
 	cards.push(rares[(Math.floor(Math.random() * rares.length))]);
+
+	// save cards to collection
+	cards.forEach(async card => {
+		await t_collection.create({
+			userid: interaction.user.id,
+			cardid: card.id,
+		});
+	});
 
 	// bundle cards into embeds
 	cards.forEach(card => {
