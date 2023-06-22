@@ -22,7 +22,7 @@
     "discord.js": "^14.1.2",
     "pokemontcgsdk": "^2.0.0",
     "sequelize": "^6.29.0",
-    "sqlite3": "^5.1.1",
+    "sqlite3": "^5.1.5",
     "undici": "^5.19.1"
   },
   "devDependencies": {
