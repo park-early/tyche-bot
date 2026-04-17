@@ -18,12 +18,12 @@
   },
   "homepage": "https://github.com/park-early/tyche-bot#readme",
   "dependencies": {
-    "@discordjs/rest": "^1.0.1",
-    "discord.js": "^14.1.2",
+    "@discordjs/rest": "^2.6.1",
+    "discord.js": "^14.26.3",
     "pokemontcgsdk": "^2.0.0",
     "sequelize": "^6.29.0",
     "sqlite3": "^5.1.5",
-    "undici": "^5.19.1"
+    "undici": "^8.1.0"
   },
   "devDependencies": {
     "eslint": "^8.21.0"
