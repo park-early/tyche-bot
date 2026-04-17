@@ -21,7 +21,7 @@
     "@discordjs/rest": "^2.6.1",
     "discord.js": "^14.26.3",
     "pokemontcgsdk": "^2.0.0",
-    "sequelize": "^6.29.0",
+    "sequelize": "^6.37.8",
     "sqlite3": "^6.0.1",
     "undici": "^8.1.0"
   },
